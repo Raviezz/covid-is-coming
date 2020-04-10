@@ -39,7 +39,7 @@ export default class NationalChart extends React.Component{
       }
 
       async fetchData(){
-        const dates = await this.getDates(new Date("2020-03-01"), new Date());  
+        const dates = await this.getDates(new Date("2020-03-17"), new Date());  
         //console.log(dates);
         var tot_data = [];
         var url = "";

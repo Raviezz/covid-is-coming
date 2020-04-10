@@ -21,7 +21,7 @@ import NationDetails from './components/national-details';
 import InternationalDetails from './components/internations-details';
 import GolbalChart from './components/global-chart';
 import NationalChart from './components/national-chart';
-import MaterialTableDemo from './components/table_with_search';
+import CountriesTable from './components/table_with_search';
 
 function Copyright() {
   return (
@@ -201,7 +201,7 @@ export default function Dashboard() {
               {/* <Paper className={classes.paper}>
                 
               </Paper> */}
-              <MaterialTableDemo />
+              <CountriesTable />
             </Grid>
           </Grid>
           <Box pt={4}>

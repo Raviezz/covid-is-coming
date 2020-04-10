@@ -9,7 +9,7 @@ import Search from "@material-ui/icons/Search"
  import Countrycodes from '../resources/country_codes_3.json';
  import './table.css';
 
-export default class MaterialTableDemo extends React.Component {
+export default class CountriesTable extends React.Component {
     constructor(){
         super();
         this.state = {
