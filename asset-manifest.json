@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/covid-is-coming/static/css/main.013674a4.chunk.css",
-    "main.js": "/covid-is-coming/static/js/main.a61728ab.chunk.js",
-    "main.js.map": "/covid-is-coming/static/js/main.a61728ab.chunk.js.map",
+    "main.js": "/covid-is-coming/static/js/main.e2458e1c.chunk.js",
+    "main.js.map": "/covid-is-coming/static/js/main.e2458e1c.chunk.js.map",
     "runtime-main.js": "/covid-is-coming/static/js/runtime-main.914e839d.js",
     "runtime-main.js.map": "/covid-is-coming/static/js/runtime-main.914e839d.js.map",
     "static/js/2.6fa142a0.chunk.js": "/covid-is-coming/static/js/2.6fa142a0.chunk.js",
     "static/js/2.6fa142a0.chunk.js.map": "/covid-is-coming/static/js/2.6fa142a0.chunk.js.map",
     "index.html": "/covid-is-coming/index.html",
-    "precache-manifest.0da5eddccb68bec65b2c0923a1b62bf9.js": "/covid-is-coming/precache-manifest.0da5eddccb68bec65b2c0923a1b62bf9.js",
+    "precache-manifest.edd2d40373cef84d8c2041eb7ad49fa9.js": "/covid-is-coming/precache-manifest.edd2d40373cef84d8c2041eb7ad49fa9.js",
     "service-worker.js": "/covid-is-coming/service-worker.js",
     "static/css/main.013674a4.chunk.css.map": "/covid-is-coming/static/css/main.013674a4.chunk.css.map",
     "static/js/2.6fa142a0.chunk.js.LICENSE.txt": "/covid-is-coming/static/js/2.6fa142a0.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.914e839d.js",
     "static/js/2.6fa142a0.chunk.js",
     "static/css/main.013674a4.chunk.css",
-    "static/js/main.a61728ab.chunk.js"
+    "static/js/main.e2458e1c.chunk.js"
   ]
 }
