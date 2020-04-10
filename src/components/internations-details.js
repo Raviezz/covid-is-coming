@@ -29,7 +29,7 @@ export default class InternationalDetails extends Component{
     render(){
         return (
             <React.Fragment>
-              <Title>GLOBALLY</Title>
+              <Title>GLOBALLY </Title>
               <Box p={1} bgcolor="#ffe0e6" display="flex"
                 justifyContent= "space-evenly"
                 flexWrap="nowrap"
