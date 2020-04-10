@@ -42,14 +42,14 @@ export default class GolbalChart extends React.Component{
                 newDate = newDate.getFullYear()+"-"+(newDate.getMonth()+1)+"-"+newDate.getDate();
                  url = "https://covidapi.info/api/v1/global/"+dates[x]+"/"+newDate;
                 const response = await fetch(url);
-                const data = await response.json();
-                tot_data.push(data.result);
+                const res_data = await response.json();
+                tot_data.push(res_data.result);
                 global_data.push(newDate);
             }else{
                  url = "https://covidapi.info/api/v1/global/"+dates[x]+"/"+dates[x+1];
                 const response = await fetch(url);
-                const data = await response.json();
-                tot_data.push(data.result);
+                const res_data = await response.json();
+                tot_data.push(res_data.result);
                 global_data.push(dates[x+1]);
             }
             
@@ -80,7 +80,7 @@ export default class GolbalChart extends React.Component{
     return (
         <React.Fragment>
           <Title>Global COVID-19 chart (interval-{10} days)</Title>
-          <ResponsiveContainer>
+          <ResponsiveContainer  width="100%">
             <LineChart
               data={this.state.data}
               margin={{

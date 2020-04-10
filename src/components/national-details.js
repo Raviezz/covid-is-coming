@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Title from './title';
@@ -9,7 +8,6 @@ import './details.css';
 
 
 export default class NationDetails extends Component{
-     classes = {};
     constructor(){
         super();
         this.state = {
@@ -17,13 +15,8 @@ export default class NationDetails extends Component{
         };
     }
     
-    componentDidMount(){
-        this.classes = makeStyles({
-            depositContext: {
-                flex: 1,
-              },
-        });
-        this.getData();
+    async componentDidMount(){
+       await this.getData();
        // console.log("cons ",this.state.covid['result']);
     }
      get_me_date() {
@@ -36,6 +29,13 @@ export default class NationDetails extends Component{
         return date.getFullYear()+'-'+month+'-'+day;
 
     }
+     numberWithCommas(x) {
+      x = String(x);
+      var pattern = /(-?\d+)(\d{3})/;
+      while (pattern.test(x))
+          x = x.replace(pattern, "$1,$2");
+      return x;
+  }
     
     render(){
         return (
@@ -48,7 +48,7 @@ export default class NationDetails extends Component{
                 p={1}
                 m={1}>
                 <Typography component="p" variant="h6" className="confirmed">
-                {this.state.covid.confirmed}    
+                {this.numberWithCommas(this.state.covid.confirmed)}  
                 </Typography>
                 <Typography component="p" variant="h6"  className="confirmed">
                 Confirmed
@@ -61,7 +61,7 @@ export default class NationDetails extends Component{
                 p={1}
                 m={1}>
               <Typography component="p" variant="h6" className="deaths">
-              {this.state.covid.deaths} 
+              {this.numberWithCommas(this.state.covid.deaths)} 
               </Typography>
               <Typography component="p" variant="h6" className="deaths">
               Deaths
@@ -74,7 +74,7 @@ export default class NationDetails extends Component{
                 p={1}
                 m={1}>
               <Typography component="p" variant="h6" className="recovered">
-              {this.state.covid.recovered} 
+              {this.numberWithCommas(this.state.covid.recovered)} 
               </Typography>
               <Typography component="p" variant="h6" className="recovered">
                Recovered
@@ -83,17 +83,14 @@ export default class NationDetails extends Component{
             </React.Fragment>
           );
     }
-    getData(){
-        fetch("https://covidapi.info/api/v1/country/IND/latest")
-        .then(res=>{
-            return res.json();
-        })
-        .then(data=>{
-           console.log(this.get_me_date())
-            const dataset = data.result[Object.keys(data.result)[0]]
-            this.setState({covid:dataset});
-            console.log("Data fetched",dataset);
-        });
+    async getData(){
+        const response = await fetch("https://covidapi.info/api/v1/country/IND/latest");
+        const data = await response.json();
+        console.log(this.get_me_date())
+        const dataset = data.result[Object.keys(data.result)[0]]
+        this.setState({covid:dataset});
+        //console.log("Data fetched",dataset);
+       
     };
   
 }

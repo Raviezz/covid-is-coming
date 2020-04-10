@@ -9,7 +9,6 @@ import BugReport from '@material-ui/icons/BugReport';
 import Description from '@material-ui/icons/Description';
 import Mood from '@material-ui/icons/Mood';
 import GitHub from '@material-ui/icons/GitHub';
-import { Link } from '@material-ui/core';
 
 export const topListItems = (
   <div>

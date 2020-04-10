@@ -1,6 +1,7 @@
 import React from 'react';
 import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer, Legend, Tooltip } from 'recharts';
 import Title from './title';
+import india_dataset from '../resources/india.json';
  
 var global_data = [];
 
@@ -39,33 +40,26 @@ export default class NationalChart extends React.Component{
       }
 
       async fetchData(){
-        const dates = await this.getDates(new Date("2020-03-17"), new Date());  
-        //console.log(dates);
-        var tot_data = [];
-        var url = "";
-        for(var x=0;x<dates.length;x++){
-            url = "https://covidapi.info/api/v1/country/IND/"+dates[x];
-            const response = await fetch(url);
-            const data = await response.json();
-           // console.log(data.result[dates[x]]);
-            tot_data.push(data.result[dates[x]]);
-            global_data.push(dates[x]);
-            
-        }
-        
-        return tot_data;
+       // const dates = await this.getDates(new Date("2020-03-02"), new Date());  
+       const response = await fetch("https://covidapi.info/api/v1/country/IND");
+        const res_data = await response.json();   
+        return res_data.result;
     };
     async prepare_actual_data(api_data){
-        var final_format = [];
-        api_data.forEach((ele,index)=>{
-         final_format.push(this.create_chart_obj(global_data[index],ele.confirmed,ele.deaths,ele.recovered));
-       });
+      var final_format = [];
+        for(var key in api_data){
+          var attr_confirmed = api_data[key].confirmed;
+          var attr_deaths = api_data[key].deaths;
+          var attr_recovered = api_data[key].recovered;
+         final_format.push(this.create_chart_obj(key,attr_confirmed,attr_deaths,attr_recovered));
+        }
        return final_format;
     }
      async componentDidMount() {
         var api_data = await this.fetchData();
+        //console.log(api_data)
         var actual_format = await this.prepare_actual_data(api_data);
-        //console.log(actual_format);
+        console.log(actual_format)
         this.setState(
             {
                 data: actual_format
@@ -77,8 +71,8 @@ export default class NationalChart extends React.Component{
   render(){
     return (
         <React.Fragment>
-          <Title>INDIA COVID-19 chart from March 2020</Title>
-          <ResponsiveContainer>
+          <Title>INDIA COVID-19 chart from Jan 22</Title>
+          <ResponsiveContainer width="100%">
             <LineChart
               data={this.state.data}
               margin={{

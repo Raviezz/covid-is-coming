@@ -1,0 +1,44 @@
+[
+    {
+      "date": "2020-04-03",
+      "confirmed": 2567,
+      "deaths": 72,
+      "recovered": 192
+    },
+    {
+      "date": "2020-04-04",
+      "confirmed": 3082,
+      "deaths": 86,
+      "recovered": 229
+    },
+    {
+      "date": "2020-04-05",
+      "confirmed": 3588,
+      "deaths": 99,
+      "recovered": 229
+    },
+    {
+      "date": "2020-04-06",
+      "confirmed": 4778,
+      "deaths": 136,
+      "recovered": 375
+    },
+    {
+      "date": "2020-04-07",
+      "confirmed": 5311,
+      "deaths": 150,
+      "recovered": 421
+    },
+    {
+      "date": "2020-04-08",
+      "confirmed": 5916,
+      "deaths": 178,
+      "recovered": 506
+    },
+    {
+      "date": "2020-04-09",
+      "confirmed": 6725,
+      "deaths": 226,
+      "recovered": 620
+    }
+  ]

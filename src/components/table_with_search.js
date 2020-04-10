@@ -42,6 +42,9 @@ export default class CountriesTable extends React.Component {
    async componentDidMount() {
       const json_data = await this.fetchData();
       const final_data = await this.prepare_data(json_data);
+      final_data.sort(function(x,y){
+          return y.confirmed - x.confirmed;
+      });
       //console.log(final_data);
         this.fetchData();
         this.setState({
@@ -60,7 +63,7 @@ export default class CountriesTable extends React.Component {
 render(){
     return (
         <MaterialTable
-          title="Countries with COVID-19"
+          title="WWC"
           columns={this.state.columns}
           data={this.state.data}
           icons={{   
