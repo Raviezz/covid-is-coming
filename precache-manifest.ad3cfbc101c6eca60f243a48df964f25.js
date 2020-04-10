@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d4935830e543eaae2666922ae3ea609b",
+    "revision": "66f5fe72a6b82b56f75753c546924d16",
     "url": "/covid-is-coming/index.html"
   },
   {
-    "revision": "19f470c88e202ddb37d8",
+    "revision": "498b152f075caacda1b7",
     "url": "/covid-is-coming/static/css/main.013674a4.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/covid-is-coming/static/js/2.5cd4e27d.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "19f470c88e202ddb37d8",
-    "url": "/covid-is-coming/static/js/main.4f1f8ac5.chunk.js"
+    "revision": "498b152f075caacda1b7",
+    "url": "/covid-is-coming/static/js/main.bd623ae1.chunk.js"
   },
   {
     "revision": "d3bb03f3a314dd5d7d23",
