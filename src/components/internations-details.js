@@ -14,7 +14,7 @@ export default class InternationalDetails extends Component{
     }
     getPreviousDate(){
       var date = new Date();
-      date.setDate(date.getDate(),-1);
+      date.setDate(date.getDate()-1);
       var month = date.getMonth()+1;
       var day = date.getDate();
       if(day<10) day = '0'+day;
