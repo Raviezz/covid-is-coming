@@ -1,10 +1,9 @@
 import React from 'react';
 import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer, Legend, Tooltip } from 'recharts';
 import Title from './title';
-import india_dataset from '../resources/india.json';
- 
-var global_data = [];
+import { Typography } from '@material-ui/core';
 
+ 
 export default class NationalChart extends React.Component{
 
     constructor(){
@@ -101,6 +100,9 @@ export default class NationalChart extends React.Component{
                <Line name="recovered" type="monotone" dataKey="recovered" stroke="#388e3c" dot={false} /> 
             </LineChart>
           </ResponsiveContainer>
+          <Typography variant="subtitle2" color="primary">
+            Data gets updated everyday once.
+        </Typography>
         </React.Fragment>
       );
   } 

@@ -113,7 +113,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
   },
   fixedHeight: {
-    height: 270,
+    height: 320,
   },
 }));
 

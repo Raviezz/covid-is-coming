@@ -19,15 +19,14 @@ export default class NationDetails extends Component{
        await this.getData();
        // console.log("cons ",this.state.covid['result']);
     }
-     get_me_date() {
-        const date = new Date();
-        date.setDate(date.getDate() - 1);
-        var month = date.getMonth();
-        var day = date.getDate();
-        if(month <10) month = '0'+month;
-        if(day<10) day = '0'+day;
-        return date.getFullYear()+'-'+month+'-'+day;
-
+    getPreviousDate(){
+      var date = new Date();
+      date.setDate(date.getDate(),-1);
+      var month = date.getMonth()+1;
+      var day = date.getDate();
+      if(day<10) day = '0'+day;
+      if(month<10) month = '0'+month;
+      return date.getFullYear()+'-'+month+'-'+day;
     }
      numberWithCommas(x) {
       x = String(x);
@@ -80,16 +79,23 @@ export default class NationDetails extends Component{
                Recovered
               </Typography>
             </Box>
+            <Box p={1} display="flex"
+                justifyContent= "space-evenly"
+                flexWrap="nowrap"
+                borderRadius="10px"
+                p={1}
+                m={1}>
+                  <Typography variant="subtitle2" color="primary">Last updated:</Typography>
+                  <Typography variant="subtitle2" color="primary">{this.getPreviousDate()}</Typography>
+                  </Box>
             </React.Fragment>
           );
     }
     async getData(){
         const response = await fetch("https://covidapi.info/api/v1/country/IND/latest");
         const data = await response.json();
-        console.log(this.get_me_date())
         const dataset = data.result[Object.keys(data.result)[0]]
         this.setState({covid:dataset});
-        //console.log("Data fetched",dataset);
        
     };
   

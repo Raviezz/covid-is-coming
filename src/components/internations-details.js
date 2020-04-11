@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-
 import Title from './title';
 import './details.css';
 
@@ -13,7 +12,15 @@ export default class InternationalDetails extends Component{
             covid :{},
         };
     }
-    
+    getPreviousDate(){
+      var date = new Date();
+      date.setDate(date.getDate(),-1);
+      var month = date.getMonth()+1;
+      var day = date.getDate();
+      if(day<10) day = '0'+day;
+      if(month<10) month = '0'+month;
+      return date.getFullYear()+'-'+month+'-'+day;
+    }
     async componentDidMount(){
         await this.getData();
        // console.log("cons ",this.state.covid['result']);
@@ -68,6 +75,15 @@ export default class InternationalDetails extends Component{
                Recovered
               </Typography>
             </Box>
+            <Box p={1} display="flex"
+                justifyContent= "space-evenly"
+                flexWrap="nowrap"
+                borderRadius="10px"
+                p={1}
+                m={1}>
+                  <Typography variant="subtitle2" color="primary">Last updated:</Typography>
+                  <Typography variant="subtitle2" color="primary">{this.getPreviousDate()}</Typography>
+                  </Box>
             </React.Fragment>
           );
     }
