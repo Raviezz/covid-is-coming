@@ -19,29 +19,24 @@ export default class StateChart extends React.Component {
         var states = await response.json();
         return await states[Object.keys(states).find(key => states[key]['state'] === this.props.data.name)];
     }
-
     async componentDidMount() { 
        var final_dataset = await this.fetchStateWiseDate();
        this.setState({chart_data:final_dataset['districtData']});
-       //console.log('State data',final_dataset);
     }
     
 
     async componentWillUpdate(nextProps, nextState) {
-       
         if(this.props!=nextProps){
-            console.log("Lastest State",nextProps.data.name); //will show the new state
+            console.log("Lastest State",nextProps.data.name); 
             var x = await this.fetchStateWiseDate()
             this.setState({chart_data:x['districtData']});
-            //console.log('Updated State ',x)
         }
       }
     render(){
-        let appName = this.props.data.name;
+        let stateName = this.props.data.name;
         return (
             <React.Fragment>
             <Title>State-wise Chart</Title>
-            
             <BarChart
             width={500}
             height={300}
@@ -49,8 +44,7 @@ export default class StateChart extends React.Component {
             margin={{
                 top: 5, right: 30, left: 20, bottom: 5,
             }}
-            >
-            
+            >   
             <XAxis dataKey="district" />
             <YAxis >
             <Label
@@ -58,14 +52,13 @@ export default class StateChart extends React.Component {
                     position="left"
                     style={{ textAnchor: 'middle', fill: 'rgba(0, 0, 0, 0.87)' }}
                     >
-                        {appName}
+                        {stateName}
                     </Label>
                 </YAxis>
             <Tooltip />
             <Legend />
             <Bar dataKey="confirmed" fill="#82ca9d" />
-            </BarChart>
-           
+            </BarChart> 
         </React.Fragment>
       );
     }
