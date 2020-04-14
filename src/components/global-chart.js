@@ -57,7 +57,7 @@ async prepare_actual_data(api_data){
     var api_data = await this.fetchData();
     //console.log(api_data)
     var actual_format = await this.prepare_actual_data(api_data);
-    console.log(actual_format)
+    //console.log(actual_format)
     this.setState(
         {
             data: actual_format

@@ -36,3 +36,6 @@
     transform: rotate(360deg);
   }
 }
+.MuiTableRow-root:hover { 
+  background: #ff093c !important 
+}

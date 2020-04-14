@@ -22,6 +22,8 @@ import InternationalDetails from './components/internations-details';
 import GolbalChart from './components/global-chart';
 import NationalChart from './components/national-chart';
 import CountriesTable from './components/table_with_search';
+import RegionTable from './components/region_table';
+import StateChart from './components/state-chart';
 
 function Copyright() {
   return (
@@ -113,13 +115,14 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
   },
   fixedHeight: {
-    height: 320,
+    height: 330,
   },
 }));
 
 export default function Dashboard() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const [name,setName] = React.useState('Telangana');
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -127,7 +130,9 @@ export default function Dashboard() {
     setOpen(false);
   };
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
-
+  const changeName = (newName)=>{
+      setName(newName);
+  };
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -145,11 +150,6 @@ export default function Dashboard() {
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
             COVID IS COMING
           </Typography>
-         {/*  <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton> */}
         </Toolbar>
       </AppBar>
       <Drawer
@@ -172,8 +172,32 @@ export default function Dashboard() {
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
-          <Grid container spacing={6}>
+          <Grid container spacing={7}>
             {/* Chart */}
+            <Grid item xs={12} md={6} md={6}> 
+                <RegionTable data={{changeName:changeName.bind(this)}} />
+                <Typography variant="subtitle2" color="primary">
+              click on the State to view details.
+              </Typography>
+            </Grid>
+            <Grid item xs={12} md={8} md={6}>
+              <Paper className={fixedHeightPaper+25}>
+              
+                <StateChart data={{name:name}} />
+              
+              </Paper>
+            </Grid>
+            <Grid item xs={12} md={8} lg={9}>
+              <Paper className={fixedHeightPaper}>
+                <NationalChart />
+              </Paper>
+            </Grid>
+            {/* Recent Deposits */}
+            {/* <Grid item xs={12} md={6} lg={3}>
+              <Paper className={fixedHeightPaper}>
+                <NationDetails />
+              </Paper>
+            </Grid> */}
             <Grid item xs={12} md={8} lg={9}>
               <Paper className={fixedHeightPaper}>
                 <GolbalChart />
@@ -185,18 +209,9 @@ export default function Dashboard() {
                 <InternationalDetails />
               </Paper>
             </Grid>
+            <Divider />
             {/* Recent Orders */}
-            <Grid item xs={12} md={8} lg={9}>
-              <Paper className={fixedHeightPaper}>
-                <NationalChart />
-              </Paper>
-            </Grid>
-            {/* Recent Deposits */}
-            <Grid item xs={12} md={6} lg={3}>
-              <Paper className={fixedHeightPaper}>
-                <NationDetails />
-              </Paper>
-            </Grid>
+            
             <Grid item xs={12}>
               {/* <Paper className={classes.paper}>
                 
