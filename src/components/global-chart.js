@@ -4,7 +4,6 @@ import Title from './title';
 import { Typography } from '@material-ui/core';
  
 export default class GolbalChart extends React.Component{
-
   constructor(){
     super();
     this.state = {
@@ -32,16 +31,13 @@ async getDates(startDate, endDate) {
     }
     return dates;
   };
-  
   create_chart_obj(date,confirmed,deaths,recovered){
       return {date,confirmed,deaths,recovered};
   }
-
   async fetchData(){
-   // const dates = await this.getDates(new Date("2020-03-02"), new Date());  
-   const response = await fetch("https://covidapi.info/api/v1/global/count");
-    const res_data = await response.json();   
-    return res_data.result;
+     const response = await fetch("https://covidapi.info/api/v1/global/count");
+     const res_data = await response.json();   
+     return res_data.result;
 };
 async prepare_actual_data(api_data){
   var final_format = [];
@@ -55,17 +51,13 @@ async prepare_actual_data(api_data){
 }
  async componentDidMount() {
     var api_data = await this.fetchData();
-    //console.log(api_data)
     var actual_format = await this.prepare_actual_data(api_data);
-    //console.log(actual_format)
     this.setState(
         {
             data: actual_format
         }
     );   
 }
-
-
 render(){
 return (
     <React.Fragment>
@@ -81,7 +73,6 @@ return (
           }}
         >
           <XAxis dataKey="date" stroke='rgba(0, 0, 0, 0.54)'>
-         
           </XAxis>
           <YAxis  type="number" interval={0} stroke='rgba(0, 0, 0, 0.54)'>
             <Label

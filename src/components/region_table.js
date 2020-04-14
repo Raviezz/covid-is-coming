@@ -1,43 +1,7 @@
-import React,{ forwardRef } from 'react';
+import React from 'react';
 import MaterialTable from 'material-table';
-import AddBox from '@material-ui/icons/AddBox';
-import ArrowUpward from '@material-ui/icons/ArrowUpward';
-import Check from '@material-ui/icons/Check';
-import ChevronLeft from '@material-ui/icons/ChevronLeft';
-import ChevronRight from '@material-ui/icons/ChevronRight';
-import Clear from '@material-ui/icons/Clear';
-import DeleteOutline from '@material-ui/icons/DeleteOutline';
-import Edit from '@material-ui/icons/Edit';
-import FilterList from '@material-ui/icons/FilterList';
-import FirstPage from '@material-ui/icons/FirstPage';
-import LastPage from '@material-ui/icons/LastPage';
-import Remove from '@material-ui/icons/Remove';
-import SaveAlt from '@material-ui/icons/SaveAlt';
-import Search from '@material-ui/icons/Search';
-import ViewColumn from '@material-ui/icons/ViewColumn';
- import './table.css';
-
- const tableIcons = {
-    Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
-    Check: forwardRef((props, ref) => <Check {...props} ref={ref} />),
-    Clear: forwardRef((props, ref) => <Clear {...props} ref={ref} />),
-    Delete: forwardRef((props, ref) => <DeleteOutline {...props} ref={ref} />),
-    DetailPanel: forwardRef((props, ref) => <ChevronRight {...props} ref={ref} />),
-    Edit: forwardRef((props, ref) => <Edit {...props} ref={ref} />),
-    Export: forwardRef((props, ref) => <SaveAlt {...props} ref={ref} />),
-    Filter: forwardRef((props, ref) => <FilterList {...props} ref={ref} />),
-    FirstPage: forwardRef((props, ref) => <FirstPage {...props} ref={ref} />),
-    LastPage: forwardRef((props, ref) => <LastPage {...props} ref={ref} />),
-    NextPage: forwardRef((props, ref) => <ChevronRight {...props} ref={ref} />),
-    PreviousPage: forwardRef((props, ref) => <ChevronLeft {...props} ref={ref} />),
-    ResetSearch: forwardRef((props, ref) => <Clear {...props} ref={ref} />),
-    Search: forwardRef((props, ref) => <Search {...props} ref={ref} />),
-    SortArrow: forwardRef((props, ref) => <ArrowUpward {...props} ref={ref} />),
-    ThirdStateCheck: forwardRef((props, ref) => <Remove {...props} ref={ref} />),
-    ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref} />)
-    };
-
-
+import {tableIcons} from '../components/utils/table-utils';
+import './table.css';
 
 export default class CountriesTable extends React.Component {
     constructor(props){
@@ -49,22 +13,18 @@ export default class CountriesTable extends React.Component {
             rowData :{},
         }
     }
-   
     async fetchData() {
         const result = await fetch("https://api.covid19india.org/data.json");
         const json_data = await result.json();
-        //console.log(json_data)
         return json_data['statewise'];
     }
    async prepare_data(json_data){
        var final_data = [];
         json_data.forEach(function(state){
             final_data.push({'state':state['state'],'active':state['active'],'confirmed':state['confirmed'],'deaths':state['deaths'],'recovered':state['recovered']});
-        });
-        
+        });    
         return final_data;
    }
-
    async componentDidMount() {
        console.log("My name is ",this.state.stateData);
       const json_data = await this.fetchData();
@@ -87,7 +47,6 @@ export default class CountriesTable extends React.Component {
             data: final_data
         });
     }
-  
 render(){
     return (
         <MaterialTable
@@ -99,8 +58,6 @@ render(){
               if(rowData['state']!== 'Total'){
                 this.props.data.changeName(rowData['state']);
               }
-            
-            //localStorage.setItem('state',rowData['state']);
        }}
         options=
             {{

@@ -5,7 +5,6 @@ import { Typography } from '@material-ui/core';
 
  
 export default class NationalChart extends React.Component{
-
     constructor(){
         super();
         this.state = {
@@ -33,14 +32,12 @@ export default class NationalChart extends React.Component{
         }
         return dates;
       };
-      
       create_chart_obj(date,confirmed,deaths,recovered){
           return {date,confirmed,deaths,recovered};
       }
 
       async fetchData(){
-       // const dates = await this.getDates(new Date("2020-03-02"), new Date());  
-       const response = await fetch("https://covidapi.info/api/v1/country/IND");
+        const response = await fetch("https://covidapi.info/api/v1/country/IND");
         const res_data = await response.json();   
         return res_data.result;
     };
@@ -56,9 +53,7 @@ export default class NationalChart extends React.Component{
     }
      async componentDidMount() {
         var api_data = await this.fetchData();
-        //console.log(api_data)
         var actual_format = await this.prepare_actual_data(api_data);
-        //console.log(actual_format)
         this.setState(
             {
                 data: actual_format
@@ -66,7 +61,6 @@ export default class NationalChart extends React.Component{
         );   
     }
   
-
   render(){
     return (
         <React.Fragment>
@@ -82,7 +76,6 @@ export default class NationalChart extends React.Component{
               }}
             >
               <XAxis dataKey="date" stroke='rgba(0, 0, 0, 0.54)'>
-             
               </XAxis>
               <YAxis  type="number" interval={0} stroke='rgba(0, 0, 0, 0.54)'>
                 <Label
