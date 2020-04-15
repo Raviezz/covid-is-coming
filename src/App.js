@@ -14,16 +14,15 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Link from '@material-ui/core/Link';
-import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { topListItems, bottomListItems } from './components/nav-list';
-import NationDetails from './components/national-details';
 import InternationalDetails from './components/internations-details';
 import GolbalChart from './components/global-chart';
 import NationalChart from './components/national-chart';
 import CountriesTable from './components/table_with_search';
 import RegionTable from './components/region_table';
 import StateChart from './components/state-chart';
+import virus1 from './images/virus-icon1.ico';
 
 function Copyright() {
   return (
@@ -143,9 +142,9 @@ export default function Dashboard() {
             color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
-            className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
+            className={clsx(classes.menuButton, open && classes.menuButtonHidden)}  
           >
-            <MenuIcon />
+            <img src={virus1} atl='C'/>
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
             COVID IS COMING
